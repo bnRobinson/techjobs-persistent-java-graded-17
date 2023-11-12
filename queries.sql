@@ -1,4 +1,7 @@
 --Part 1
+SELECT *
+FROM job.columns
+
 
 --Part 2
 
