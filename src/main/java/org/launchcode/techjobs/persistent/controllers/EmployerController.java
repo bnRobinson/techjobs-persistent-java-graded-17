@@ -32,15 +32,15 @@ public class EmployerController {
     }
 
     //Task 2 step 3- Add code to save valid object to employerRepository
-    @PostMapping("add")
+    @PostMapping("/add")
     public String processAddEmployerForm(@ModelAttribute @Valid Employer newEmployer,
                                     Errors errors, Model model) {
 
         if (errors.hasErrors()) {
             return "employers/add";
-        } else {
-            employerRepository.save(newEmployer);
         }
+            employerRepository.save(newEmployer);
+
 
         return "redirect:";
     }
@@ -49,7 +49,7 @@ public class EmployerController {
     @GetMapping("view/{employerId}")
     public String displayViewEmployer(Model model, @PathVariable int employerId) {
 
-        Optional optEmployer = Employer.findById(employerId);
+        Optional optEmployer = employerRepository.findById(employerId);
         if (optEmployer.isPresent()) {
             Employer employer = (Employer) optEmployer.get();
             model.addAttribute("employer", employer);
