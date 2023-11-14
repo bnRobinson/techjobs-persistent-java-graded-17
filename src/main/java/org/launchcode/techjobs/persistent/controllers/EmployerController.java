@@ -19,7 +19,7 @@ public class EmployerController {
     private EmployerRepository employerRepository;
 
     //Task 2- 2. Add Index Method
-    @GetMapping("/index")
+    @RequestMapping("/")
     public String index(Model model){
         model.addAttribute("employers", employerRepository.findAll());
         return "employers/index";

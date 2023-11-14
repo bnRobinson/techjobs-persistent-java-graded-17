@@ -17,16 +17,26 @@ public class Employer extends AbstractEntity {
     private String location;
 
     //Task 3- add jobs field
-    @OneToMany(mappedBy= "employer")
-    @JoinColumn
+    @OneToMany
+    @JoinColumn (name="employer_id")
     private final List<Job> jobs= new ArrayList<>();
 
     public String getLocation() {
         return location;
     }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
     public Employer(String location){
         this.location=location;
     }
+
+    public List<Job> getJobs() {
+        return jobs;
+    }
+
     public Employer() {
     }
 
